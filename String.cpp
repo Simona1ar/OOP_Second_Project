@@ -87,7 +87,7 @@ bool String::isDouble() {
 	if (!isNumber(str[0]) && !isSign(str[0]))
 		return false;
 	bool hasDot = false;
-	for (size_t i = i; i < size-1; i++)
+	for (size_t i = 1; i < size-1; i++)
 	{
 		if (isDot(str[i])) {
 			if (hasDot)

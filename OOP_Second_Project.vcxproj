@@ -147,7 +147,11 @@
     <ClInclude Include="StringSell.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DoubleCell.cpp" />
+    <ClCompile Include="Formula.cpp" />
+    <ClCompile Include="IntCell.cpp" />
     <ClCompile Include="String.cpp" />
+    <ClCompile Include="StringCell.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
