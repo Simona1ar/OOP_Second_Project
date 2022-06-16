@@ -2,6 +2,7 @@
 #include <cstring>
 #include <iostream>
 #include <fstream>
+#include <string>
 using namespace std;
 
 class String {
@@ -25,6 +26,11 @@ public:
 	friend ostream& operator<<(ostream& out, const String& str);
 	friend istream& operator>>(istream& in, String& str);
 
-	bool isInteger();
-	bool isDouble();
+	bool isInteger() const;
+	bool isDouble() const;
+	bool isString();
+	bool isFormula();
+
+	int stringToInt() const;
+	double stringToDouble() const;
 };

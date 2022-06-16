@@ -70,9 +70,23 @@ bool isNumber(const char c) {
 bool isDot(const char c) {
 	return c == '.';
 }
+bool isQuotationMarks(const char c) {
+	return c == '"';
+}
+bool isDash(const char c) {
+	return c == '\\';
+}
+bool isEqualSign(const char c) {
+	return c == '=';
+}
+bool isFormulaSign(const char c) {
+	return(c == '*' || c == '+' || c == '-' || c == '^' || c == '/');
+}
+bool isROrC(const char c) {
+	return (c == 'R' || c == 'C');
+}
 
-
-bool String::isInteger() {
+bool String::isInteger() const {
 	if (!isNumber(str[0]) && !isSign(str[0]))
 		return false;
 	for (size_t i = 1; i < size-1; i++)
@@ -83,7 +97,7 @@ bool String::isInteger() {
 	return true;
 }
 
-bool String::isDouble() {
+bool String::isDouble() const{
 	if (!isNumber(str[0]) && !isSign(str[0]))
 		return false;
 	bool hasDot = false;
@@ -101,3 +115,33 @@ bool String::isDouble() {
 	return true;
 }
 
+bool String::isString() {
+	if (!isQuotationMarks(str[0]))
+		return false;
+	return true;
+
+}
+
+bool String::isFormula() {
+	if (!isEqualSign(str[0]))
+		return false;
+	for (size_t i = 1; i < size-1; i++)
+	{
+		if (!isFormulaSign(str[i]) && !isROrC(str[i]) && !isNumber(str[i])) {
+			return false;
+		}
+	}
+	return true;
+}
+
+int String::stringToInt() const {
+	if (!isInteger() && !isDouble())
+		return 0;
+	return atoi(str);
+}
+
+double String::stringToDouble() const {
+	if (!isInteger() && !isDouble())
+		return 0;
+	return stod(str);
+}
